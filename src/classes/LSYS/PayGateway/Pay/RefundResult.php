@@ -15,10 +15,10 @@ abstract class RefundResult extends Result{
         $this->_refund_no=$refund_no;
         $this->_refund_pay_no=$refund_pay_no;
     }
-    public function get_refund_no(){
+    public function getRefundNo(){
         return $this->_refund_no;
     }
-    public function get_refund_pay_no(){
+    public function getRefundPayNo(){
         return $this->_refund_pay_no;
     }
 }

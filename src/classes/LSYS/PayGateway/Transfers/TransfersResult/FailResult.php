@@ -20,7 +20,7 @@ class FailResult extends TransfersResult{
      * 设置建议本地回滚
      * @return $this
      */
-    public function set_local_rollback(){
+    public function setLocalRollback(){
         $this->_is_local_rollback=true;
         return $this;
     }
@@ -28,25 +28,25 @@ class FailResult extends TransfersResult{
      * 是否建议本地回滚操作
      * @return bool
      */
-    public function is_local_rollback(){
+    public function isLocalRollback(){
         return $this->_is_local_rollback;
     }
-    public function set_local_fail(){
+    public function setLocalFail(){
         $this->_is_local_fail=true;
         return $this;
     }
-    public function is_local_fail(){
+    public function isLocalFail(){
         return $this->_is_local_fail;
     }
-    public function set_sign_fail(){
+    public function setSignFail(){
         $this->_is_local_fail=true;
         $this->_is_sign_fail=true;
         return $this;
     }
-    public function is_sign_fail(){
+    public function isSignFail(){
         return $this->_is_sign_fail;
     }
-    public function get_msg(){
+    public function getMsg(){
         return $this->_msg;
     }
 }

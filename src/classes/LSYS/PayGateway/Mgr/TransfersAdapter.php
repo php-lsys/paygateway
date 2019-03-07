@@ -11,13 +11,13 @@ interface TransfersAdapter{
      * @param array $config
      * @return \LSYS\PayGateway\Transfers\TransfersAdapter
      */
-    public function transfers_create($config);
+    public function transfersCreate($config);
     /**
      * @return string
      */
-    public function get_name();
+    public function getName();
     /**
      * @return string
      */
-    public function transfers_type();
+    public function transfersType();
 }

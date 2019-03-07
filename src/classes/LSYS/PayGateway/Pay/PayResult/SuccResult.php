@@ -12,11 +12,11 @@ class SuccResult extends PayResult{
     public function __construct($raw,$pay_sn,$pay_no){
         parent::__construct($raw,$pay_sn,$pay_no);
     }
-    public function set_refundd($is_refund){
+    public function setRefundd($is_refund){
         $this->_refunded=boolval($is_refund);
         return $this;
     }
-    public function get_refundd(){
+    public function getRefundd(){
         return $this->_refunded;
     }
 }

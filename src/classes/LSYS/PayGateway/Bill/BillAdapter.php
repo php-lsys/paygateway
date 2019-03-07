@@ -12,7 +12,7 @@ interface BillAdapter{
 	 * @param string $date
 	 * @return $this
 	 */
-	public function set_date($date);
+	public function setDate($date);
 	/**
 	 * run get bill
 	 */

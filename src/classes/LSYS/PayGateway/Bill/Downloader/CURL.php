@@ -18,7 +18,7 @@ class CURL implements Downloader{
 	public function download($bill_type,$url,&$tag=null){
 		if ($tag==null)$tag=md5($url).".bill";
 		$ch = curl_init($url);
-		$file=$this->file_path($bill_type, $tag);
+		$file=$this->filePath($bill_type, $tag);
 		$fp = fopen($file, "w");
 		curl_setopt($ch,CURLOPT_USERAGENT,"Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727)");
 		curl_setopt($ch, CURLOPT_FILE, $fp);
@@ -29,15 +29,15 @@ class CURL implements Downloader{
 		if (!$status)unlink($file);
 		return $status;
 	}
-	public function is_realtime(){
+	public function isRealtime(){
 		return true;
 	}
-	public function file_path($bill_type,$tag){
+	public function filePath($bill_type,$tag){
 		$bill_type=str_ireplace(array("\\","/"),"_", $bill_type);
 		if (@mkdir($this->_dir.DIRECTORY_SEPARATOR.$bill_type));
 		return $this->_dir.DIRECTORY_SEPARATOR.$bill_type.DIRECTORY_SEPARATOR.$tag;
 	}
 	public function delete($bill_type,$tag){
-		unlink($this->file_path($bill_type, $tag));
+		unlink($this->filePath($bill_type, $tag));
 	}
 }

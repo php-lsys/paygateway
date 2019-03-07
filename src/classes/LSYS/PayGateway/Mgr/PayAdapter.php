@@ -11,18 +11,18 @@ interface PayAdapter{
      * @param array $config
      * @return \LSYS\PayGateway\Pay\PayAdapter|\LSYS\PayGateway\Pay\PayAdapterSimple|\LSYS\PayGateway\Pay\PayAdapterMore
      */
-    public function pay_create($config);
+    public function payCreate($config);
 	/**
 	 * @return string
 	 */
-	public function get_name();
+	public function getName();
 	/**
 	 * @return string||array
 	 */
-	public function pay_more_key();
+	public function payMoreKey();
 	/**
 	 * @param string $type
 	 * @return bool
 	 */
-	public function support_type($type);
+	public function supportType($type);
 }

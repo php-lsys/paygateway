@@ -26,7 +26,7 @@ class PayMgr{
      */
     public function find($name){
         foreach ($this->_pay as $v){
-            if ($name==$v->get_name())return $v;
+            if ($name==$v->getName())return $v;
         }
         return null;
     }
@@ -34,15 +34,15 @@ class PayMgr{
      * @param string $type
      * @return \LSYS\PayGateway\Mgr\PayAdapter[]
      */
-    public function find_all($type=null){
+    public function findAll($type=null){
         if($type==null) return $this->_pay;
         $out=array();
         foreach ($this->_pay as $v){
-            if($v->support_type($type))$out[]=$v;
+            if($v->supportType($type))$out[]=$v;
         }
         return $out;
     }
-    public function support_type(PayAdapter $pay,$type){
+    public function supportType(PayAdapter $pay,$type){
         $types=[];
         foreach (array(
             PayAdapter::TYPE_ANDROID,
@@ -51,7 +51,7 @@ class PayMgr{
             PayAdapter::TYPE_WAP,
             PayAdapter::TYPE_WECHAT,
         ) as $type){
-            if($pay->support_type($type))$types[]=$type;
+            if($pay->supportType($type))$types[]=$type;
         }
         return $types;
     }
@@ -59,9 +59,9 @@ class PayMgr{
      * @param string $name
      * @return \LSYS\PayGateway\Mgr\RefundAdapter||NULL
      */
-    public function find_refund($name){
+    public function findRefund($name){
         foreach ($this->_pay as $v){
-            if ($v instanceof \LSYS\PayGateway\Mgr\RefundAdapter&&$v->get_name()==$name){
+            if ($v instanceof \LSYS\PayGateway\Mgr\RefundAdapter&&$v->getName()==$name){
                 return $v;
             }
         }

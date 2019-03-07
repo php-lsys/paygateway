@@ -10,5 +10,5 @@ interface Data{
 	/**
 	 * @return Result
 	 */
-	public function get_result();
+	public function getResult();
 }

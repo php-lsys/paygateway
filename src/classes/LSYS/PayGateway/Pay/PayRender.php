@@ -22,19 +22,19 @@ class PayRender{
 		$this->_out=$out;
 		$this->_data=$data;
 	}
-	public function get_out(){
+	public function getOut(){
 		return $this->_out;
 	}
-	public function get_data(){
+	public function getData(){
 		return $this->_data;
 	}
 	public function __toString(){
 		try{
 			switch ($this->_out){
 				case PayRender::OUT_HTML: return $this->_data;
-				case PayRender::OUT_URL: return $this->_render_url();
-				case PayRender::OUT_QRCODE: return $this->_render_qrcode();
-				case PayRender::OUT_CREDITCARD: return $this->_credit_card();
+				case PayRender::OUT_URL: return $this->_renderUrl();
+				case PayRender::OUT_QRCODE: return $this->_renderQrcode();
+				case PayRender::OUT_CREDITCARD: return $this->_creditCard();
 				case PayRender::OUT_VARS: return $this->_json();
 			}
 		}catch (\Exception $e){
@@ -44,27 +44,27 @@ class PayRender{
 	}
 	
 	//链接
-	protected function _render_url(){
-		if (!headers_sent()) Utils::redirect_url($this->_data);
+	protected function _renderUrl(){
+		if (!headers_sent()) Utils::redirectUrl($this->_data);
 	}
 	
 	//二维码
 	
-	protected static function _qrcode_key($string){
+	protected static function _qrcodeKey($string){
 		return md5(self::$key.$string);
 	}
-	protected function _render_qrcode(){
+	protected function _renderQrcode(){
 		extract($this->_data);
 		//$qrcode_url
 		//$return_url
 		//$check_url
 		//$code_url
 		//$sn
-		$key=self::_qrcode_key($code_url);
+		$key=self::_qrcodeKey($code_url);
 		$op=strpos($qrcode_url, "?")!==false?"&":"?";
 		$qrcode_url=$qrcode_url.$op."code_url=".urlencode($code_url)."&key=".$key;
 		
-		$key=self::_qrcode_key($sn);
+		$key=self::_qrcodeKey($sn);
 		$op=strpos($check_url, "?")!==false?"&":"?";
 		$check_url=$check_url.$op."sn=".$sn."&key=".$key;
 		
@@ -82,7 +82,7 @@ class PayRender{
 	/**
 	 * 显示二维码错误
 	 */
-	protected static function _show_bad_qucode(){
+	protected static function _showBadQucode(){
 		@Header("Content-type: image/png");
 		readfile(__DIR__."/../../../../libs/lpay_utils/error.png");
 		die();
@@ -92,11 +92,11 @@ class PayRender{
 	 * @param string $label
 	 * @param array $color
 	 */
-	public static function qrcode_render($font_path='',$label='',$logo='',$color=array('r' => 0, 'g' => 0, 'b' => 0, 'a' => 0)){
-		if (!isset($_GET['code_url'])||!isset($_GET['key']))self::_show_bad_qucode();
+	public static function qrcodeRender($font_path='',$label='',$logo='',$color=array('r' => 0, 'g' => 0, 'b' => 0, 'a' => 0)){
+		if (!isset($_GET['code_url'])||!isset($_GET['key']))self::_showBadQucode();
 		$url = urldecode($_GET['code_url']);
-		$skey=self::_qrcode_key($url);
-		if($skey!=$_GET['key'])self::_show_bad_qucode();
+		$skey=self::_qrcodeKey($url);
+		if($skey!=$_GET['key'])self::_showBadQucode();
 		$qrCode = new QrCode();
 		$qrCode
 			->setText($url)
@@ -119,10 +119,10 @@ class PayRender{
 	 * 获取订单号
 	 * @return boolean|string
 	 */
-	public static function qrcode_get_sn(){
+	public static function qrcodeGetSn(){
 		if (!isset($_GET['sn'])||!isset($_GET['key']))return false;
 		$sn = $_GET['sn'];
-		$skey=self::_qrcode_key($sn);
+		$skey=self::_qrcodeKey($sn);
 		if($skey!=$_GET['key'])return false;
 		return $sn;
 	}
@@ -130,7 +130,7 @@ class PayRender{
 	 * 输出付款状态
 	 * @param string $status
 	 */
-	public static function qrcode_output($status=true,$data='',$name='callback'){
+	public static function qrcodeOutput($status=true,$data='',$name='callback'){
 		if (!isset($_GET[$name]))$callback='callback';
 		else $callback=strip_tags($_GET[$name]);
 		$json_str=json_encode(array("status"=>boolval($status),'data'=>$data));
@@ -139,7 +139,7 @@ class PayRender{
 	}
 
 	//信用卡
-	protected function _credit_card(){
+	protected function _creditCard(){
 		extract($this->_data);
 		ob_start();
 		//$key
@@ -155,7 +155,7 @@ class PayRender{
 	 * 输出付款状态
 	 * @param string $status
 	 */
-	public static function credit_card_output($status=true,$data=''){
+	public static function creditCardOutput($status=true,$data=''){
 		echo json_encode(array("status"=>boolval($status),'data'=>$data));
 		die();
 	}

@@ -35,5 +35,5 @@ interface PayAdapter{
     /**
      * @return int
      */
-    public static function support_type($type);
+    public static function supportType($type);
 }

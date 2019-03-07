@@ -11,5 +11,5 @@ interface RefundAdapter{
      * @param array $config
      * @return \LSYS\PayGateway\Pay\RefundAdapter
      */
-    public function refund_create($config);
+    public function refundCreate($config);
 }

@@ -13,7 +13,7 @@ class Utils{
 	 * @param string $moeny1
 	 * @return boolean
 	 */
-	public static function money_equal($money,$moeny1){
+	public static function moneyEqual($money,$moeny1){
 		return round(floatval($money),2)==round(floatval($moeny1),2);
 	}
 	/**
@@ -21,14 +21,14 @@ class Utils{
 	 * @param float $money
 	 * @return number
 	 */
-	public static function money_format($money){
+	public static function moneyFormat($money){
 		return round(floatval($money),2);
 	}
 	/**
 	 * 获取客户端IP
 	 * @return string
 	 */
-	public static function client_ip(){
+	public static function clientIp(){
 		$ip=false;
 		if(isset($_SERVER["HTTP_CLIENT_IP"])){
 			$ip = $_SERVER["HTTP_CLIENT_IP"];
@@ -51,7 +51,7 @@ class Utils{
 	 * @param string $prefix 前缀
 	 * @return string
 	 */
-	public static function snno_create($prefix){
+	public static function snnoCreate($prefix){
 		return $prefix.date("ymdHis").rand(100, 999);
 	}
 	/**
@@ -62,7 +62,7 @@ class Utils{
 	 * @param number $max_fee_money　最大手续费 ０时表示不存在最大交易手续费
 	 * @return number　可提现金额
 	 */
-	public static function transfers_money($money,$fee,$min_fee_money=0,$max_fee_money=0){
+	public static function transfersMoney($money,$fee,$min_fee_money=0,$max_fee_money=0){
 	    $money=floatval($money);
 	    if($fee<=0) return $money;
 	    if($money<=$min_fee_money) return 0;
@@ -83,7 +83,7 @@ class Utils{
 	 * @param float $max_fee_money 最大手续费　0为不限制最大
 	 * @return float　需要手续费
 	 */
-	public static function transfers_fee($fee,$money,$min_fee_money=0,$max_fee_money=0){
+	public static function transfersFee($fee,$money,$min_fee_money=0,$max_fee_money=0){
 	    $pay_fee=$money*$fee;
 	    if($pay_fee<$min_fee_money) return $min_fee_money;
 	    if ($max_fee_money>0&&$pay_fee>$max_fee_money) return $max_fee_money;
@@ -93,7 +93,7 @@ class Utils{
 	 * 重定向地址
 	 * @param string $url
 	 */
-	public static function redirect_url($url,$code=301){
+	public static function redirectUrl($url,$code=301){
 		if ($code!=301)$code=302;
 		if(empty($url))die("redirect url can't be null");
 		$url=str_replace(array("\n","\r","\t"), " ", $url);
@@ -124,7 +124,7 @@ REDICECTDOC;
 	 * @param string $key
 	 * @return string
 	 */
-	public static function encode_url($string,$key){
+	public static function encodeUrl($string,$key){
 		$string=trim($string);
 		$key=trim($key);
 		return $string.'-'.md5($string.$key);
@@ -135,7 +135,7 @@ REDICECTDOC;
 	 * @param string $key
 	 * @return NULL|string
 	 */
-	public static function decode_url($string,$key){
+	public static function decodeUrl($string,$key){
 		if(empty($string)) return null;
 		$string=trim($string);
 		$key=trim($key);
@@ -150,7 +150,7 @@ REDICECTDOC;
 	 * @param array $keys
 	 * @throws \LSYS\PayGateway\Exception
 	 */
-	public static function check_keys(array $config,array $keys){
+	public static function checkKeys(array $config,array $keys){
 	    $keys=array_diff( $keys ,array_keys($config));
 	    if (count($keys)>0)throw new \LSYS\PayGateway\Exception(strtr("miss key[:keys]",array(":keys"=>implode(",", $keys))));
 	}

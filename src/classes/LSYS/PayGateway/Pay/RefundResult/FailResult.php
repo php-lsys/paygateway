@@ -20,15 +20,15 @@ class FailResult extends RefundResult{
      * 设置建议本地回滚
      * @return \LSYS\PayGateway\Pay\RefundResult\FailResult
      */
-    public function set_local_rollback(){
+    public function setLocalRollback(){
         $this->_is_local_rollback=true;
         return $this;
     }
-    public function set_local_fail(){
+    public function setLocalFail(){
         $this->_is_local_fail=true;
         return $this;
     }
-    public function set_sign_fail(){
+    public function setSignFail(){
         $this->_is_local_fail=true;
         $this->_is_sign_fail=true;
         return $this;
@@ -37,24 +37,24 @@ class FailResult extends RefundResult{
      * 是否建议本地回滚操作
      * @return bool
      */
-    public function is_local_rollback(){
+    public function isLocalRollback(){
         return $this->_is_local_rollback;
     }
     /**
      * 返回true表示错误非由支付端告知的错误
      * @return boolean
      */
-    public function is_local_fail(){
+    public function isLocalFail(){
         return $this->_is_local_fail;
     }
     /**
      * 是否是否由签名不通过触发
      * @return boolean
      */
-    public function is_sign_fail(){
+    public function isSignFail(){
         return $this->_is_sign_fail;
     }
-    public function get_msg(){
+    public function getMsg(){
         return $this->_msg;
     }
 }

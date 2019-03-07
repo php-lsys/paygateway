@@ -11,11 +11,11 @@ interface PayAdapterMore extends PayAdapter{
      * get support bank list
      * @return array
      */
-    public static function more_key();
+    public static function moreKey();
     /**
      * render to pay
      * @param PayParam $pay_param
      * @return PayRender
      */
-    public function pay_render($key,PayParam $pay_param);
+    public function payRender($key,PayParam $pay_param);
 }

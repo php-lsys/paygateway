@@ -7,5 +7,5 @@
  */
 namespace LSYS\PayGateway;
 interface Param{
-	public function as_array();	 
+	public function asArray();	 
 }

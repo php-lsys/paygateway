@@ -24,39 +24,39 @@ class PayParam implements Param,\Serializable{
 		$this->_param['ctimeout']=time();
 		$this->_param['good_ids']=array();
 	}
-	public function get_sn(){
-		if (empty($this->_param['sn'])) $this->_param['sn']=Utils::snno_create('LO');
+	public function getSn(){
+		if (empty($this->_param['sn'])) $this->_param['sn']=Utils::snnoCreate('LO');
 		return $this->_param['sn'];
 	}
 	/**
 	 * @return Money
 	 */
-	public function get_money(){
+	public function getMoney(){
 		return $this->_param['money'];
 	}
-	public function get_pay_money($currency=Money::CNY){
+	public function getPayMoney($currency=Money::CNY){
 		$money=$this->_param['money']->to($currency);
 		return $money<0.01?0.01:$money;
 	}
-	public function get_title(){
+	public function getTitle(){
 		return empty($this->_param['title'])?("pay {$this->_param['money']}"):$this->_param['title'];
 	}
-	public function get_body(){
-		return empty($this->_param['body'])?$this->get_title():$this->_param['body'];
+	public function getBody(){
+		return empty($this->_param['body'])?$this->getTitle():$this->_param['body'];
 	}
-	public function get_show_url(){
-		return empty($this->_param['show_url'])?$this->_def_url():$this->_param['show_url'];
+	public function getShowUrl(){
+		return empty($this->_param['show_url'])?$this->_defUrl():$this->_param['show_url'];
 	}
-	public function get_cancel_url(){
-		return empty($this->_param['cancel_url'])?$this->_def_url():$this->_param['cancel_url'];
+	public function getCancelUrl(){
+		return empty($this->_param['cancel_url'])?$this->_defUrl():$this->_param['cancel_url'];
 	}
-	public function get_goods(){
+	public function getGoods(){
 		return $this->_param['good_ids'];
 	}
-	public function get_timeout(){
+	public function getTimeout(){
 		return $this->_param['timeout']<=0?0:$this->_param['timeout'];
 	}
-	protected function _def_url(){
+	protected function _defUrl(){
 		if (isset($_SERVER['HTTP_HOST'])){
 			if (isset($_SERVER['HTTPS'])&&strtoupper($_SERVER['HTTPS']) == 'ON'){
 				$p='https://';
@@ -66,49 +66,49 @@ class PayParam implements Param,\Serializable{
 			return $p.$_SERVER['HTTP_HOST'].$pr;
 		}else return '/';
 	}
-	public function set_create_time($timeout){
+	public function setCreateTime($timeout){
 		$this->_param['ctimeout']=$timeout;
 		return $this;
 	}
-	public function get_create_time(){
+	public function getCreateTime(){
 		return $this->_param['ctimeout'];
 	}
-	public function set_timeout($timeout){
+	public function setTimeout($timeout){
 		$this->_param['timeout']=$timeout;
 		return $this;
 	}
-	public function set_title($title){
+	public function setTitle($title){
 		$this->_param['title']=$title;
 		return $this;
 	}
-	public function set_body($body){
+	public function setBody($body){
 		$this->_param['body']=$body;
 		return $this;
 	}
-	public function set_show_url($show_url){
+	public function setShowUrl($show_url){
 		$this->_param['show_url']=$show_url;
 		return $this;
 	}
-	public function set_cancel_url($cancel_url){
+	public function setCancelUrl($cancel_url){
 		$this->_param['cancel_url']=$cancel_url;
 		return $this;
 	}
-	public function set_goods(array $ids){
+	public function setGoods(array $ids){
 		$this->_param['good_ids']=$ids;
 		return $this;
 	}
-	public function as_array(){
+	public function asArray(){
 		$param=$this->_param;
 		$param['money']=strval($param['money']);
-		$param['currency']=$param['money']->get_currency();
+		$param['currency']=$param['money']->getCurrency();
 		return $param;
 	}
 	public function serialize () {
 		$money=$this->_param['money'];
 		unset($this->_param['money']);
 		$data=$this->_param;
-		$data['money']=$money->get_money();
-		$data['currency']=$money->get_currency();
+		$data['money']=$money->getMoney();
+		$data['currency']=$money->getCurrency();
 		return json_encode($data);
 	}
 	public function unserialize ($serialized) {

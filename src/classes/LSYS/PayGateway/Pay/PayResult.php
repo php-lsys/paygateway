@@ -17,11 +17,11 @@ abstract class PayResult extends Result{
         $this->_pay_sn=$pay_sn;
         $this->_pay_no=$pay_no;
     }
-    public function set_money($money){
+    public function setMoney($money){
         $this->_money= Money::factroy($money);
         return $this;
     }
-    public function set_pay_account($pay_account){
+    public function setPayAccount($pay_account){
         $this->_pay_account=$pay_account;
         return $this;
     }
@@ -29,23 +29,23 @@ abstract class PayResult extends Result{
      * 外部支付系统订单号
      * @return string
      */
-    public function get_pay_no(){
+    public function getPayNo(){
         return $this->_pay_no;
     }
     /**
      * 本地站点订单号
      * @return string
      */
-    public function get_pay_sn(){
+    public function getPaySn(){
         return $this->_pay_sn;
     }
     /**
      * @return Money
      */
-    public function get_money(){
+    public function getMoney(){
         return $this->_money;
     }
-    public function get_pay_account(){
+    public function getPayAccount(){
         return $this->_pay_account;
     }
 }

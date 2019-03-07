@@ -34,31 +34,31 @@ class Result{
 		$this->_pay_time=$pay_time;
 		$this->_param=$param;
 	}
-	public function is_type($type){
+	public function isType($type){
 		return $this->_type&$type=$type;
 	}
-	public function get_type(){
+	public function getType(){
 		return $this->_type;
 	}
-	public function get_pay_sn(){
+	public function getPaySn(){
 		return $this->_pay_sn;
 	}
-	public function get_pay_no(){
+	public function getPayNo(){
 		return $this->_pay_no;
 	}
-	public function get_pay_account(){
+	public function getPayAccount(){
 		return $this->_pay_account;
 	}
-	public function get_money(){
+	public function getMoney(){
 		return $this->_money;
 	}
-	public function get_fee_money(){
+	public function getFeeMoney(){
 		return $this->_fee_money;
 	}
-	public function get_pay_time(){
+	public function getPayTime(){
 		return $this->_pay_time;
 	}
-	public function get_param($key=NULL){
+	public function getParam($key=NULL){
 		if ($key===null) return $this->_param;
 		if (!isset($this->_param[$key])) return null;
 		return $this->_param[$key];

@@ -15,10 +15,10 @@ abstract class TransfersResult extends Result{
         $this->_transfers_no=$transfers_no;
         $this->_pay_sn=$pay_no;
     }
-    public function get_transfers_no(){
+    public function getTransfersNo(){
         return $this->_transfers_no;
     }
-    public function get_pay_no(){
+    public function getPayNo(){
         return $this->_pay_no;
     }
 }

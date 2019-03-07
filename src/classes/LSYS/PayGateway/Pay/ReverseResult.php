@@ -19,14 +19,14 @@ abstract class ReverseResult extends Result{
      * 外部支付系统订单号
      * @return string
      */
-    public function get_pay_no(){
+    public function getPayNo(){
         return $this->_pay_no;
     }
     /**
      * 本地站点订单号
      * @return string
      */
-    public function get_pay_sn(){
+    public function getPaySn(){
         return $this->_pay_sn;
     }
 }

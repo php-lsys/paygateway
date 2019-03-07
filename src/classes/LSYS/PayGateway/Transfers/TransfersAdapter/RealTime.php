@@ -13,5 +13,5 @@ interface RealTime extends TransfersAdapter{
 	 * @param TransfersParam $param
 	 * @return \LSYS\PayGateway\Transfers\TransfersResult
 	 */
-	public function real_transfers(TransfersParam $param);
+	public function realTransfers(TransfersParam $param);
 }

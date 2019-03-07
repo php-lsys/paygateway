@@ -14,16 +14,16 @@ class QueryParam implements Param{
 		$this->_param['pay_no']=$pay_no;
 		$this->_param['ctime']=$create_time;
 	}
-	public function get_create_time(){
+	public function getCreateTime(){
 		return $this->_param['ctime'];
 	}
-	public function get_pay_no(){
+	public function getPayNo(){
 		return $this->_param['pay_no'];
 	}
-	public function get_pay_sn(){
+	public function getPaySn(){
 		return $this->_param['pay_sn'];
 	}
-	public function as_array(){
+	public function asArray(){
 		return $this->_param;
 	}
 }

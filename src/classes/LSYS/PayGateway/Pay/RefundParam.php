@@ -24,55 +24,55 @@ class RefundParam implements Param{
 		$this->_param['total_money']=Money::factroy($total_money);
 		$this->_param['money']=Money::factroy($refund_money);
 	}
-	public function set_return_no($return_no){
+	public function setReturnNo($return_no){
 		$this->_param['return_no']=$return_no;
 		return $this;
 	}
-	public function set_refund_msg($msg){
+	public function setRefundMsg($msg){
 		$this->_param['msg']=$msg;
 		return $this;
 	}
-	public function get_return_no(){
+	public function getReturnNo(){
 		if (empty($this->_param['return_no'])){
-			$this->_param['return_no']=Utils::snno_create('LR');
+			$this->_param['return_no']=Utils::snnoCreate('LR');
 		}
 		return $this->_param['return_no'];
 	}
-	public function get_refund_msg(){
+	public function getRefundMsg(){
 		if(empty($this->_param['msg'])) return '';
 		return $this->_param['msg'];
 	}
-	public function get_pay_sn(){
+	public function getPaySn(){
 		return $this->_param['pay_sn'];
 	}
-	public function get_pay_no(){
+	public function getPayNo(){
 		return $this->_param['pay_no'];
 	}
 	/**
 	 * @return Money
 	 */
-	public function get_refund_money(){
+	public function getRefundMoney(){
 		return $this->_param['money'];
 	}
 	/**
 	 * @return Money
 	 */
-	public function get_total_money(){
+	public function getTotalMoney(){
 		return $this->_param['total_money'];
 	}
-	public function get_refund_pay_money($currency=Money::CNY){
+	public function getRefundPayMoney($currency=Money::CNY){
 		$money=$this->_param['money']->to($currency);
 		if ($money<=0) return 0;
-		$total=$this->get_total_pay_money($currency);
+		$total=$this->getTotalPayMoney($currency);
 		$money=$money<=$total?$money:$total;
-		return Utils::money_format($money);
+		return Utils::moneyFormat($money);
 	}
-	public function get_total_pay_money($currency=Money::CNY){
+	public function getTotalPayMoney($currency=Money::CNY){
 		$money=$this->_param['total_money']->to($currency);
 		if ($money<=0) return 0;
 		return $money;
 	}
-	public function as_array(){
+	public function asArray(){
 		return $this->_param;
 	}
 }

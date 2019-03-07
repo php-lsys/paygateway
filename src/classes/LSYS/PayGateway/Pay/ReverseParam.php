@@ -13,13 +13,13 @@ class ReverseParam implements Param{
 		$this->_param['pay_sn']=$pay_sn;
 		$this->_param['pay_no']=$pay_no;
 	}
-	public function get_pay_no(){
+	public function getPayNo(){
 		return $this->_param['pay_no'];
 	}
-	public function get_pay_sn(){
+	public function getPaySn(){
 		return $this->_param['pay_sn'];
 	}
-	public function as_array(){
+	public function asArray(){
 		return $this->_param;
 	}
 }

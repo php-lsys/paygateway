@@ -22,7 +22,7 @@ class TransfersMgr{
      */
     public function find($name){
         foreach ($this->_transfers as $v){
-            if ($name==$v->get_name())return $v;
+            if ($name==$v->getName())return $v;
         }
         return null;
     }
@@ -30,17 +30,17 @@ class TransfersMgr{
      * @param string $name
      * @return string
      */
-    public function transfers_type($name){
+    public function transfersType($name){
         foreach ($this->_transfers as $vv){
-            if($vv->get_name()==$name){
-                return $vv->transfers_type();
+            if($vv->getName()==$name){
+                return $vv->transfersType();
             }
         }
     }
     /**
      * @return \LSYS\PayGateway\Mgr\TransfersAdapter[]
      */
-    public function find_all(){
+    public function findAll(){
         return $this->_transfers;
     }
 }

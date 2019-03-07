@@ -17,13 +17,13 @@ interface Downloader{
 	/**
 	 * @return bool
 	 */
-	public function is_realtime();
+	public function isRealtime();
 	/**
 	 * @param string $bill_type
 	 * @param string $tag
 	 * @return string
 	 */
-	public function file_path($bill_type,$tag);
+	public function filePath($bill_type,$tag);
 	/**
 	 * @param string $bill_type
 	 * @param string $tag

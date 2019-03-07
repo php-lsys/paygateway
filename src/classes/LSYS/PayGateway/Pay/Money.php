@@ -11,10 +11,10 @@ use LSYS\PayGateway\Pay\MoneyRate\FixedRate;
 use LSYS\PayGateway\Exception;
 class Money{
 	protected static $_money_rate;
-	public static function set_money_rate(MoneyRate $money_rate){
+	public static function setMoneyRate(MoneyRate $money_rate){
 		self::$_money_rate=$money_rate;
 	}
-	protected function _get_money_rate(){
+	protected function _getMoneyRate(){
 		if (self::$_money_rate==null)self::$_money_rate=new FixedRate();
 		return self::$_money_rate;
 	}
@@ -38,23 +38,23 @@ class Money{
 		$this->_currency=$currency;
 	}
 	public function __toString(){
-		return strval($this->get_money());
+		return strval($this->getMoney());
 	}
 	public function to($currency){
-		if ($currency==$this->_currency) return  Utils::money_format($this->_money); 
-		$rate=$this->_get_money_rate();
-		$rate=$rate->exchange_rate($currency,$this->_currency);
+		if ($currency==$this->_currency) return  Utils::moneyFormat($this->_money); 
+		$rate=$this->_getMoneyRate();
+		$rate=$rate->exchangeRate($currency,$this->_currency);
 		if ($rate<=0) throw new Exception('exchange rate is wrong :'.$rate);
-		return Utils::money_format($this->_money*$rate);
+		return Utils::moneyFormat($this->_money*$rate);
 	}
-	public function get_currency(){
+	public function getCurrency(){
 		return $this->_currency;
 	}
-	public function get_money(){
-		return Utils::money_format($this->_money);
+	public function getMoney(){
+		return Utils::moneyFormat($this->_money);
 	}
 	public function equal(Money $money){
-		if ($money->_currency!=$this->_currency) return Utils::money_equal($this->_money,$money->_money);
+		if ($money->_currency!=$this->_currency) return Utils::moneyEqual($this->_money,$money->_money);
 		//不同货币??
 		return $this->_money/$money->_money>=0.8;//汇率问题...
 	}

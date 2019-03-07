@@ -13,6 +13,6 @@ interface RefundNotify{
 	 * @param RefundParam $refund_param
 	 * @return RefundResult
 	 */
-	public function refund_notify();
-	public function refund_notify_output($status=true,$msg=null);
+	public function refundNotify();
+	public function refundNotifyOutput($status=true,$msg=null);
 }

@@ -10,10 +10,10 @@ interface TransfersNotify{
 	/**
 	 * @return TransfersResult|BatchResult
 	 */
-	public function transfers_notify();
+	public function transfersNotify();
 	/**
 	 * @param bool $status
 	 * @param string $msg
 	 */
-	public function transfers_notify_output($status=true,$msg=null);
+	public function transfersNotifyOutput($status=true,$msg=null);
 }

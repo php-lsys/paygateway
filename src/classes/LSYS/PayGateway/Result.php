@@ -12,7 +12,7 @@ abstract class Result{
     public function __construct($raw){
         $this->_raw=$raw;
     }
-    public function get_raw(){
+    public function getRaw(){
         return $this->_raw;
     }
     public function __toString(){
@@ -26,7 +26,7 @@ abstract class Result{
      * @param mixed $param
      * @return static
      */
-    public function set_param($param){
+    public function setParam($param){
         $this->_param=$param;
         return $this;
     }
@@ -34,7 +34,7 @@ abstract class Result{
      * 获取解析后的数据
      * @return mixed
      */
-    public function get_param(){
+    public function getParam(){
         return $this->_param;
     }
 }

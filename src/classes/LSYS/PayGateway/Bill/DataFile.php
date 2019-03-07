@@ -11,5 +11,5 @@ interface DataFile extends Data{
 	 * @param string $file_path
 	 * @return bool
 	 */
-	public function load_file($file_path);
+	public function loadFile($file_path);
 }

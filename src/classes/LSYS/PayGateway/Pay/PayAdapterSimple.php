@@ -12,5 +12,5 @@ interface PayAdapterSimple extends PayAdapter{
 	 * @param PayParam $pay_param
 	 * @return PayRender
 	 */
-	public function pay_render(PayParam $pay_param);
+	public function payRender(PayParam $pay_param);
 }

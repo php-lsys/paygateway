@@ -13,7 +13,7 @@ use LSYS\PayGateway\Utils;
 class TransfersParam implements Param{
 	protected $_param=array();
 	public function __construct($pay_account,$pay_name,$money,$transfers_no=null){
-		if ($transfers_no==null)$transfers_no=Utils::snno_create('LT');
+		if ($transfers_no==null)$transfers_no=Utils::snnoCreate('LT');
 		$this->_param=array(
 			'pay_account'=>$pay_account,
 			'pay_name'=>$pay_name,
@@ -23,38 +23,38 @@ class TransfersParam implements Param{
 			'extra'=>array(),
 		);
 	}
-	public function set_extra($param){
+	public function setExtra($param){
 		$this->_param['extra']=$param;
 		return $this;
 	}
-	public function set_pay_msg($msg){
+	public function setPayMsg($msg){
 		$this->_param['msg']=$msg;
 		return $this;
 	}
-	public function get_pay_account(){
+	public function getPayAccount(){
 		return $this->_param['pay_account'];
 	}
-	public function get_pay_name(){
+	public function getPayName(){
 		return $this->_param['pay_name'];
 	}
-	public function get_money(){
+	public function getMoney(){
 		return $this->_param['pay_money'];
 	}
-	public function get_pay_money($currency=Money::CNY){
+	public function getPayMoney($currency=Money::CNY){
 		$money=$this->_param['pay_money']->to($currency);
 		if ($money<=0) return 0;
 		return $money;
 	}
-	public function get_transfers_no(){
+	public function getTransfersNo(){
 		return $this->_param['transfers_no'];
 	}
-	public function get_pay_msg(){
+	public function getPayMsg(){
 		return $this->_param['msg'];
 	}
-	public function get_extra(){
+	public function getExtra(){
 		return $this->_param['extra'];
 	}
-	public function as_array(){
+	public function asArray(){
 		return $this->_param;
 	}
 	

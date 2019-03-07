@@ -15,22 +15,22 @@ class FailResult extends PayResult{
         parent::__construct($raw,$pay_sn,$pay_no);
         $this->_msg=$msg;
     }
-    public function set_local_fail(){
+    public function setLocalFail(){
         $this->_is_local_fail=true;
         return $this;
     }
-    public function is_local_fail(){
+    public function isLocalFail(){
         return $this->_is_local_fail;
     }
-    public function set_sign_fail(){
+    public function setSignFail(){
         $this->_is_local_fail=true;
         $this->_is_sign_fail=true;
         return $this;
     }
-    public function is_sign_fail(){
+    public function isSignFail(){
         return $this->_is_sign_fail;
     }
-    public function get_msg(){
+    public function getMsg(){
         return $this->_msg;
     }
 }

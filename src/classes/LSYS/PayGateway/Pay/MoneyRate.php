@@ -7,5 +7,5 @@
  */
 namespace LSYS\PayGateway\Pay;
 interface MoneyRate{
-	public function exchange_rate($currency1,$currency2);
+	public function exchangeRate($currency1,$currency2);
 }

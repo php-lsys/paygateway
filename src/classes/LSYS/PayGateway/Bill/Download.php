@@ -14,25 +14,25 @@ abstract class Download{
 	 * @param Downloader $downloader
 	 * @return bool
 	 */
-	public function set_downloader(Downloader $downloader){
+	public function setDownloader(Downloader $downloader){
 		$this->_downloader=$downloader;
 		return $this;
 	}
 	/**
 	 * @return Downloader
 	 */
-	public function get_downloader(){
+	public function getDownloader(){
 		if ($this->_downloader==null)$this->_downloader=new CURL();
 		return $this->_downloader;
 	}
 	/**
 	 * @return DataFile
 	 */
-	abstract public function get_data_file();
+	abstract public function getDataFile();
 	/**
 	 * @return string
 	 */
-	public function get_tag(){
+	public function getTag(){
 		return $this->_tag;
 	}
 	/**
@@ -40,7 +40,7 @@ abstract class Download{
 	 * @param string $tag
 	 * @return \LSYS\PayGateway\Bill\Download
 	 */
-	public function set_tag($tag){
+	public function setTag($tag){
 		$this->_tag=$tag;
 		return $this;
 	}
@@ -50,9 +50,9 @@ abstract class Download{
 	 * @return \LSYS\PayGateway\Bill\Result||null
 	 */
 	public static function fetch(\LSYS\PayGateway\Bill\Download $bill){
-		$result=$bill->get_data_file()->get_result();
+		$result=$bill->getDataFile()->getResult();
 		//遍历完成清除下载文件
-		if ($result == false) $bill->get_downloader()->delete(get_class($bill), $bill->get_tag());
+		if ($result == false) $bill->getDownloader()->delete(get_class($bill), $bill->getTag());
 		return $result;
 	}
 }

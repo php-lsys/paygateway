@@ -10,7 +10,7 @@ use LSYS\PayGateway\Pay\Money;
 use LSYS\PayGateway\Pay\MoneyRate;
 use LSYS\PayGateway\Exception;
 class FixedRate implements MoneyRate{
-	public function exchange_rate($currency1,$currency2){
+	public function exchangeRate($currency1,$currency2){
 		if($currency1==Money::CNY&&$currency2==Money::USD){
 			return 7/1;
 		}elseif($currency1==Money::USD&&$currency2==Money::CNY){

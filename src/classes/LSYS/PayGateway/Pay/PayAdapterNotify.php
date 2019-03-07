@@ -11,9 +11,9 @@ interface PayAdapterNotify{
 	 * pay notify
 	 * @return PayResult
 	 */
-	public function pay_notify();
+	public function payNotify();
 	/**
 	 * pay notify
 	 */
-	public function pay_notify_output($status=true,$msg=null);
+	public function payNotifyOutput($status=true,$msg=null);
 }

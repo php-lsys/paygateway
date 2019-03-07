@@ -11,5 +11,5 @@ interface PayAdapterCallback{
 	 * pay callback
 	 * @return PayResult
 	 */
-	public function pay_callback();
+	public function payCallback();
 }
