@@ -2,14 +2,29 @@
 	"name" : "lsys/paygateway",
 	"type" : "library",
 	"license": "Apache-2.0",
-
 	"description" : "lsys module paygateway",
 	"autoload" : {
 		"psr-4" : {
-			"LSYS\\PayGateway\\" : "src/classes/LSYS/PayGateway"
+			"LSYS\\PayGateway\\" : [
+				"src/common/classes/LSYS/PayGateway",
+				"src/driver-alipay/classes/LSYS/PayGateway",
+				"src/driver-baidu/classes/LSYS/PayGateway",
+				"src/driver-jd/classes/LSYS/PayGateway",
+				"src/driver-palpay/classes/LSYS/PayGateway",
+				"src/driver-qpay/classes/LSYS/PayGateway",
+				"src/driver-unionpay/classes/LSYS/PayGateway",
+				"src/driver-wechat/classes/LSYS/PayGateway",
+				"src/loger/classes/LSYS/PayGateway"
+			]
 		}
 	},
 	"require" : {
 		"php" : ">=5.4"
+	},
+	"suggest": {
+		"phpseclib/mcrypt_compat":"1.0.6 on driver-jd",
+		"paypal/merchant-sdk-php" : "v3.9.1 on driver-palpay",
+		"endroid/qr-code" : "2.5.0 on driver-wechat",
+		"lsys/session" : "~2.1.0 on driver-wechat"
 	}
 }
