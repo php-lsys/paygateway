@@ -25,6 +25,6 @@
 		"phpseclib/mcrypt_compat":"1.0.6 on driver-jd",
 		"paypal/merchant-sdk-php" : "v3.9.1 on driver-palpay",
 		"endroid/qr-code" : "2.5.0 on driver-wechat",
-		"lsys/session" : "~2.1.0 on driver-wechat"
+		"lsys/session" : "~2.0.0 on driver-wechat"
 	}
 }
